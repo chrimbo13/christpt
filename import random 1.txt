@@ -1,0 +1,17 @@
+import random
+import string
+
+def genera_password(complessita):
+    lunghezza = 8 if complessita == 'semplice' else 20
+    caratteri = string.ascii_letters + string.digits if complessita == 'semplice' else string.printable
+    password = ''.join(random.choice(caratteri) for _ in range(lunghezza))
+    return password
+
+# Esempio di utilizzo della funzione
+complessita = input("Vuoi una password semplice o complicata? (semplice/complicata): ").lower()
+while complessita not in ['semplice', 'complicata']:
+    print("Scelta non valida. Inserisci 'semplice' o 'complicata'.")
+    complessita = input("Vuoi una password semplice o complicata? (semplice/complicata): ").lower()
+
+password = genera_password(complessita)
+print("La tua password è:", password)
